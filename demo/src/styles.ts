@@ -2,7 +2,7 @@ import { createElement } from "react";
 import { styled, setup } from "goober";
 import { createGlobalStyles } from "goober/global";
 import { Star } from "./components/Icon";
-import { RgbaColorPicker } from "../../src";
+import { GradientRgbaColorPicker } from "../../src";
 
 setup(createElement);
 
@@ -47,7 +47,7 @@ export const HeaderDemo = styled("div")`
   flex-shrink: 0;
 `;
 
-export const HeaderDemoPicker = styled(RgbaColorPicker)`
+export const HeaderDemoPicker = styled(GradientRgbaColorPicker)`
   width: 100%;
   border-radius: 9px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
