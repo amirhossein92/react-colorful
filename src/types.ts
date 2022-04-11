@@ -9,6 +9,9 @@ export interface RgbColor {
 export interface RgbaColor extends RgbColor {
   a: number;
 }
+export interface GradientHsvaColor {
+  stopColors: StopColor[];
+}
 
 export interface HslColor {
   h: number;
@@ -26,19 +29,29 @@ export interface HsvColor {
   v: number;
 }
 
+export interface StopColor {
+  hsva: HsvaColor;
+  offset: number;
+}
+
 export interface HsvaColor extends HsvColor {
   a: number;
 }
 
 export type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
+export type GradientColor = GradientHsvaColor;
 
-export type AnyColor = string | ObjectColor;
+export type AnyColor = string | ObjectColor | GradientColor;
 
 export interface ColorModel<T extends AnyColor> {
   defaultColor: T;
   toHsva: (defaultColor: T) => HsvaColor;
   fromHsva: (hsva: HsvaColor) => T;
   equal: (first: T, second: T) => boolean;
+}
+
+export interface GradientColorModel<T extends GradientColor> {
+  defaultColor: T;
 }
 
 type ColorPickerHTMLAttributes = Omit<

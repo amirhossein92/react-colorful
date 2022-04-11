@@ -12,6 +12,7 @@ export { RgbaColorPicker } from "./components/RgbaColorPicker";
 export { RgbaStringColorPicker } from "./components/RgbaStringColorPicker";
 export { RgbColorPicker } from "./components/RgbColorPicker";
 export { RgbStringColorPicker } from "./components/RgbStringColorPicker";
+export { GradientRgbaColorPicker } from "./components/GradientRgbaColorPicker";
 
 // Additional components
 export { HexColorInput } from "./components/HexColorInput";
