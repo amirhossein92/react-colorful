@@ -11,6 +11,8 @@ export interface RgbaColor extends RgbColor {
 }
 export interface GradientHsvaColor {
   stopColors: StopColor[];
+  type: GradientType;
+  direction: GradientDirection;
 }
 
 export interface HslColor {
@@ -37,6 +39,17 @@ export interface StopColor {
 export interface HsvaColor extends HsvColor {
   a: number;
 }
+
+export type GradientType = "linear" | "radial";
+export type GradientDirection =
+  | "to right"
+  | "to left"
+  | "to top"
+  | "to bottom"
+  | "to top right"
+  | "to top left"
+  | "to bottom right"
+  | "to bottom left";
 
 export type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
 export type GradientColor = GradientHsvaColor;
@@ -72,4 +85,9 @@ type ColorInputHTMLAttributes = Omit<
 export interface ColorInputBaseProps extends ColorInputHTMLAttributes {
   color?: string;
   onChange?: (newColor: string) => void;
+}
+
+export interface GradientTypeBaseProps extends ColorInputHTMLAttributes {
+  type?: GradientType;
+  onChange?: (newType: GradientType) => void;
 }
