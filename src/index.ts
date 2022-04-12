@@ -19,7 +19,16 @@ export { GradientRgbaColorPicker } from "./components/GradientRgbaColorPicker";
 export { HexColorInput } from "./components/HexColorInput";
 
 // Color model types
-export { RgbColor, RgbaColor, HslColor, HslaColor, HsvColor, HsvaColor } from "./types";
+export {
+  RgbColor,
+  RgbaColor,
+  HslColor,
+  HslaColor,
+  HsvColor,
+  HsvaColor,
+  GradientHsvaColor,
+} from "./types";
 
 // Tooling
 export { setNonce } from "./utils/nonce";
+export { hsvaGradientToString as gradientToString } from "./utils/convert";

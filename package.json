@@ -1,7 +1,7 @@
 {
-  "name": "react-colorful",
+  "name": "react-colorful-gradient",
   "version": "5.6.1",
-  "description": "🎨 A tiny (2,8 KB) color picker component for React and Preact apps. Fast, well-tested, dependency-free, mobile-friendly and accessible",
+  "description": "added gradient component into the react-colorful",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "module": "dist/index.module.js",
@@ -22,13 +22,13 @@
     "size": "npm run build && size-limit",
     "check-types": "tsc --noEmit true",
     "test": "jest tests --coverage",
-    "build": "del-cli 'dist/*' && microbundle build --entry src/index.ts --jsx React.createElement --name react-colorful --css inline --tsconfig tsconfig.build.json",
+    "build": "del-cli 'dist/*' && microbundle build --entry src/index.ts --jsx React.createElement --name react-colorful-gradient --css inline --tsconfig tsconfig.build.json",
     "postbuild": "cpy dist/index.module.js dist --rename=index.mjs && cpy dist/index.module.js.map dist --rename=index.mjs.map",
     "prepublishOnly": "npm run build",
     "check-release": "npm publish --dry-run",
     "release": "npm publish",
     "start-demo": "parcel demo/src/index.html --out-dir demo/dist --open",
-    "build-demo": "del-cli 'demo/dist/*' && parcel build demo/src/index.html --out-dir demo/dist --public-url https://omgovich.github.io/react-colorful/",
+    "build-demo": "del-cli 'demo/dist/*' && parcel build demo/src/index.html --out-dir demo/dist --public-url https://amirhossein92.github.io/react-colorful-gradient/",
     "deploy-demo": "npm run build-demo && gh-pages -d demo/dist"
   },
   "size-limit": [
@@ -137,7 +137,7 @@
     "README.md",
     "package.json"
   ],
-  "repository": "omgovich/react-colorful",
+  "repository": "amirhossein92/react-colorful-gradient",
   "keywords": [
     "react",
     "color picker",
@@ -158,9 +158,9 @@
   "author": "Vlad Shilov <omgovich@ya.ru>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/omgovich/react-colorful/issues"
+    "url": "https://github.com/amirhossein92/react-colorful-gradient/issues"
   },
-  "homepage": "https://omgovich.github.io/react-colorful",
+  "homepage": "https://amirhossein92.github.io/react-colorful-gradient",
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
