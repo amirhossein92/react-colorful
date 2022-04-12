@@ -18,6 +18,8 @@ import { useEventCallback } from "../../hooks/useEventCallback";
 
 interface Props<T extends GradientColor> extends Partial<ColorPickerBaseProps<T>> {
   colorModel: GradientColorModel<T>;
+  hasHexInput?: boolean;
+  hasRgbInput?: boolean;
 }
 
 const hsvaColorModel: ColorModel<HsvaColor> = {
@@ -32,6 +34,8 @@ export const GradientAlphaColorPicker = <T extends GradientColor>({
   colorModel,
   color = colorModel.defaultColor,
   onChange,
+  hasHexInput,
+  hasRgbInput,
   ...rest
 }: Props<T>): JSX.Element => {
   const nodeRef = useRef<HTMLDivElement>(null);
@@ -78,6 +82,8 @@ export const GradientAlphaColorPicker = <T extends GradientColor>({
         colorModel={hsvaColorModel}
         color={selectedStopColor ? selectedStopColor.hsva : hsvaColorModel.defaultColor}
         onChange={onSelectedColorChanged}
+        hasHexInput={hasHexInput}
+        hasRgbInput={hasRgbInput}
       />
     </div>
   );

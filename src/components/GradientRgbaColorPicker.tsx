@@ -3,6 +3,11 @@ import React from "react";
 import { GradientAlphaColorPicker } from "./common/GradientAlphaColorPicker";
 import { ColorPickerBaseProps, GradientColorModel, GradientHsvaColor } from "../types";
 
+export interface GradientRgbaColorPickerProps {
+  hasHexInput?: boolean;
+  hasRgbInput?: boolean;
+}
+
 const colorModel: GradientColorModel<GradientHsvaColor> = {
   defaultColor: {
     stopColors: [
@@ -16,5 +21,5 @@ const colorModel: GradientColorModel<GradientHsvaColor> = {
 };
 
 export const GradientRgbaColorPicker = (
-  props: Partial<ColorPickerBaseProps<GradientHsvaColor>>
+  props: Partial<ColorPickerBaseProps<GradientHsvaColor>> & GradientRgbaColorPickerProps
 ): JSX.Element => <GradientAlphaColorPicker {...props} colorModel={colorModel} />;
