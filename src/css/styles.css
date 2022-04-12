@@ -16,6 +16,7 @@
   border-radius: 8px 8px 0 0;
   background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0)),
     linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  height: 160px;
 }
 
 .react-colorful__pointer-fill,
@@ -137,4 +138,24 @@
   border-radius: 4px;
   text-align: center;
   color: #000;
+}
+
+.rgba-color-input label {
+  display: inline-block;
+  width: 3rem;
+}
+
+.rgba-color-input__r,
+.rgba-color-input__g,
+.rgba-color-input__b,
+.rgba-color-input__a {
+  width: 4rem;
+}
+
+.react-colorful__hex-wrapper label {
+  display: inline-block;
+  width: 3rem;
+}
+.react-colorful__hex {
+  width: 6rem;
 }

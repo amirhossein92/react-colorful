@@ -8,15 +8,22 @@ import { ColorModel, ColorPickerBaseProps, AnyColor } from "../../types";
 import { useColorManipulation } from "../../hooks/useColorManipulation";
 import { useStyleSheet } from "../../hooks/useStyleSheet";
 import { formatClassName } from "../../utils/format";
+import { HexColorInput } from "../HexColorInput";
+import { hexToHsva, hsvaToHex, hsvaToRgba, rgbaToHsva } from "../../utils/convert";
+import { RgbaColorInput } from "../RgbaColorInput";
 
 interface Props<T extends AnyColor> extends Partial<ColorPickerBaseProps<T>> {
   colorModel: ColorModel<T>;
+  hasHexInput?: boolean;
+  hasRgbInput?: boolean;
 }
 
 export const AlphaColorPicker = <T extends AnyColor>({
   className,
   colorModel,
   color = colorModel.defaultColor,
+  hasHexInput,
+  hasRgbInput = true,
   onChange,
   ...rest
 }: Props<T>): JSX.Element => {
@@ -32,6 +39,30 @@ export const AlphaColorPicker = <T extends AnyColor>({
       <Saturation hsva={hsva} onChange={updateHsva} />
       <Hue hue={hsva.h} onChange={updateHsva} />
       <Alpha hsva={hsva} onChange={updateHsva} className="react-colorful__last-control" />
+
+      {(hasRgbInput || hasHexInput) && (
+        <div className="react-colorful__inputs">
+          {hasRgbInput && (
+            <RgbaColorInput
+              alpha
+              color={hsvaToRgba(hsva)}
+              onChange={(newColor) => updateHsva(rgbaToHsva(newColor))}
+            />
+          )}
+          {hasHexInput && (
+            <div className={`react-colorful__hex-wrapper`}>
+              <label>{"HEX"}</label>
+              <HexColorInput
+                className="react-colorful__hex"
+                color={hsvaToHex(hsva)}
+                prefixed
+                alpha
+                onChange={(newColor) => updateHsva(hexToHsva(newColor))}
+              />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

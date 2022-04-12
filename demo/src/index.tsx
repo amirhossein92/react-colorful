@@ -70,7 +70,7 @@ const Demo = () => {
 
       <Header style={{ color: textColor }}>
         <HeaderDemo>
-          <HeaderDemoPicker color={color} onChange={handleChange} />
+          <HeaderDemoPicker color={color} onChange={handleChange} hasHexInput hasRgbInput />
         </HeaderDemo>
         <HeaderContent>
           <HeaderTitle>React Colorful 🎨</HeaderTitle>
