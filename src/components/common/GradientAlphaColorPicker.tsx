@@ -39,7 +39,7 @@ export const GradientAlphaColorPicker = <T extends GradientColor>({
 
   const onChangeCallback = useEventCallback<T>(onChange);
 
-  const [stopColors, setStopColors] = useState<StopColor[]>(colorModel.defaultColor.stopColors);
+  const [stopColors, setStopColors] = useState<StopColor[]>(color.stopColors);
   const [selectedStopColor, setSelectedStopColor] = useState<StopColor | null>(null);
 
   const nodeClassName = formatClassName(["react-colorful", className]);
@@ -62,23 +62,22 @@ export const GradientAlphaColorPicker = <T extends GradientColor>({
   };
 
   useEffect(() => {
-    onChangeCallback({ stopColors });
-  }, [stopColors]);
+    onChangeCallback({ ...color, stopColors });
+  }, [stopColors, onChangeCallback]);
 
   return (
     <div {...rest} ref={nodeRef} className={nodeClassName}>
-      <AlphaColorPicker
-        colorModel={hsvaColorModel}
-        color={selectedStopColor ? selectedStopColor.hsva : hsvaColorModel.defaultColor}
-        onChange={onSelectedColorChanged}
-      />
-
       <StopColors
-        className="react-colorful__last-control"
         onChange={setStopColors}
         stopColors={stopColors}
         onSelectedStopColor={onSelectedStopColor}
         onDeselect={() => setSelectedStopColor(null)}
+      />
+
+      <AlphaColorPicker
+        colorModel={hsvaColorModel}
+        color={selectedStopColor ? selectedStopColor.hsva : hsvaColorModel.defaultColor}
+        onChange={onSelectedColorChanged}
       />
     </div>
   );

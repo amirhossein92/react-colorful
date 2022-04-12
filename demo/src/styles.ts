@@ -50,7 +50,7 @@ export const HeaderDemo = styled("div")`
 export const HeaderDemoPicker = styled(GradientRgbaColorPicker)`
   width: 100%;
   border-radius: 9px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2); */
 `;
 
 export const HeaderContent = styled("div")`

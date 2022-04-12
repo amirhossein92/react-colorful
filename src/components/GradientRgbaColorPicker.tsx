@@ -10,6 +10,8 @@ const colorModel: GradientColorModel<GradientHsvaColor> = {
       { hsva: { h: 60, s: 100, v: 100, a: 1 }, offset: 0.5 },
       { hsva: { h: 240, s: 100, v: 50, a: 1 }, offset: 1 },
     ],
+    type: "linear",
+    direction: "to bottom",
   },
 };
 

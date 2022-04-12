@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Interactive, Interaction } from "./Interactive";
 import { Pointer } from "./Pointer";
 
-import { hsvaToRgbaString } from "../../utils/convert";
+import { hsvaGradientToString, hsvaToRgbaString } from "../../utils/convert";
 import { formatClassName } from "../../utils/format";
 import { StopColor } from "../../types";
 
@@ -53,7 +53,12 @@ const StopColorsBase = ({
   };
 
   return (
-    <div className={nodeClassName}>
+    <div
+      className={nodeClassName}
+      style={{
+        background: hsvaGradientToString({ stopColors, type: "linear", direction: "to right" }),
+      }}
+    >
       <Interactive onMove={handleMove} onKey={handleKey} aria-label="Stop Colors">
         {stopColors.map(({ hsva, offset }, index) => (
           <Pointer

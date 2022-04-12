@@ -1,5 +1,14 @@
 import { round } from "./round";
-import { RgbaColor, RgbColor, HslaColor, HslColor, HsvaColor, HsvColor } from "../types";
+import {
+  RgbaColor,
+  RgbColor,
+  HslaColor,
+  HslColor,
+  HsvaColor,
+  HsvColor,
+  GradientHsvaColor,
+  StopColor,
+} from "../types";
 
 /**
  * Valid CSS <angle> units.
@@ -202,4 +211,24 @@ export const hslaToHsl = ({ h, s, l }: HslaColor): HslColor => ({ h, s, l });
 export const hsvaToHsv = (hsva: HsvaColor): HsvColor => {
   const { h, s, v } = roundHsva(hsva);
   return { h, s, v };
+};
+
+export const hsvaGradientToString = (gradient: GradientHsvaColor): string => {
+  if (!gradient) return "";
+
+  switch (gradient.type) {
+    case "linear":
+      return `linear-gradient(${gradient.direction}, ${colorStopsToString(gradient.stopColors)})`;
+    case "radial":
+      return `radial-gradient(circle, ${colorStopsToString(gradient.stopColors)})`;
+    default:
+      return "";
+  }
+};
+
+export const colorStopsToString = (stopColors: StopColor[]): string => {
+  return stopColors
+    .sort((a, b) => a.offset - b.offset)
+    .map((q) => `${hsvaToRgbaString(q.hsva)} ${q.offset * 100}%`)
+    .join(",");
 };

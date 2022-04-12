@@ -18,11 +18,13 @@ import {
   Links,
   LinkSeparator,
 } from "./styles";
+import { GradientHsvaColor } from "../../src/types";
+import { hsvaGradientToString, rgbaToHsva } from "../../src/utils/convert";
 
 // See http://www.w3.org/TR/AERT#color-contrast
 const getBrightness = ({ r, g, b }: RgbaColor) => (r * 299 + g * 587 + b * 114) / 1000;
 
-const getRandomColor = (): RgbaColor => {
+const getRandomColor = (): GradientHsvaColor => {
   const colors = [
     { r: 209, g: 97, b: 28, a: 1 }, // orange
     { r: 34, g: 91, b: 161, a: 1 }, // blue
@@ -31,21 +33,33 @@ const getRandomColor = (): RgbaColor => {
     { r: 189, g: 60, b: 60, a: 1 }, // salmon
   ];
 
-  return colors[Math.floor(Math.random() * colors.length)];
+  const firstColor = colors[Math.floor(Math.random() * colors.length)];
+  const secondColor = colors[Math.floor(Math.random() * colors.length)];
+  const thirdColor = colors[Math.floor(Math.random() * colors.length)];
+
+  return {
+    stopColors: [
+      { offset: 0, hsva: rgbaToHsva(firstColor) },
+      { offset: 0.5, hsva: rgbaToHsva(secondColor) },
+      { offset: 1, hsva: rgbaToHsva(thirdColor) },
+    ],
+    type: "linear",
+    direction: "to bottom",
+  };
 };
 
 const Demo = () => {
-  const [color, setColor] = useState<RgbaColor>(getRandomColor);
-  const textColor = getBrightness(color) > 128 || color.a < 0.5 ? "#000" : "#FFF";
+  const [color, setColor] = useState<GradientHsvaColor>(getRandomColor);
+  const textColor = "#FFF";
 
   const stargazerCount = useStargazerCount();
 
-  const handleChange = (color: RgbaColor) => {
+  const handleChange = (color: GradientHsvaColor) => {
     console.log("🎨", color);
     setColor(color);
   };
 
-  const colorString = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a}`;
+  const colorString = hsvaGradientToString(color);
 
   useBodyBackground(colorString);
   useFaviconColor(colorString);
@@ -86,7 +100,7 @@ const Demo = () => {
         </HeaderContent>
       </Header>
 
-      {process.env.NODE_ENV === "development" && <DevTools />}
+      {/* {process.env.NODE_ENV === "development" && <DevTools />} */}
     </div>
   );
 };
