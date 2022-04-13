@@ -49,7 +49,8 @@ export type GradientDirection =
   | "to top right"
   | "to top left"
   | "to bottom right"
-  | "to bottom left";
+  | "to bottom left"
+  | "to center";
 
 export type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
 export type GradientColor = GradientHsvaColor;
