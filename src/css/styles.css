@@ -131,13 +131,19 @@
   width: 1.5rem;
   height: 1.5rem;
 
-  line-height: 1;
-
-  background-color: #ccc;
-  border: 1px solid #000;
+  border: 2px solid #0075fa;
   border-radius: 4px;
   text-align: center;
   color: #000;
+
+  font-size: 32px;
+  line-height: 16px;
+  font-family: monospace;
+}
+
+.react-colorful__pointer-remove {
+  border-color: red;
+  color: red;
 }
 
 .rgba-color-input label {
