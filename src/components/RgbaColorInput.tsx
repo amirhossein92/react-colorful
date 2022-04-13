@@ -76,7 +76,7 @@ const RgbIndividualInput = (props: RgbaIndividualInputProps) => {
   }, []);
 
   return (
-    <div className={`rgba-color-input__${name}-wrapper`}>
+    <div className={`rgba-color-input__wrapper`}>
       <label>{label}</label>
       <ColorInput
         {...rest}
@@ -104,7 +104,7 @@ const AlphaInput = (props: RgbaIndividualInputProps) => {
   }, []);
 
   return (
-    <div className={`rgba-color-input__${name}-wrapper`}>
+    <div className={`rgba-color-input__wrapper`}>
       <label>{label}</label>
       <ColorInput
         {...rest}

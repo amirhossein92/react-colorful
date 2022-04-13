@@ -14,8 +14,6 @@ import { RgbaColorInput } from "../RgbaColorInput";
 
 interface Props<T extends AnyColor> extends Partial<ColorPickerBaseProps<T>> {
   colorModel: ColorModel<T>;
-  hasHexInput?: boolean;
-  hasRgbInput?: boolean;
 }
 
 export const AlphaColorPicker = <T extends AnyColor>({
@@ -23,7 +21,7 @@ export const AlphaColorPicker = <T extends AnyColor>({
   colorModel,
   color = colorModel.defaultColor,
   hasHexInput,
-  hasRgbInput = true,
+  hasRgbInput,
   onChange,
   ...rest
 }: Props<T>): JSX.Element => {

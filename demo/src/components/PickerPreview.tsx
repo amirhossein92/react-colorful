@@ -32,7 +32,7 @@ export function PickerPreview<T extends AnyColor>({
       <PreviewTitle>{title}</PreviewTitle>
       <PreviewDemo>
         <Wrapper>
-          <PickerComponent color={color} onChange={handleChange} />
+          <PickerComponent hasRgbInput color={color} onChange={handleChange} />
         </Wrapper>
         {title.startsWith("HEX") && (
           // @ts-ignore
