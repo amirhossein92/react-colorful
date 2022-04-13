@@ -75,6 +75,9 @@ type ColorPickerHTMLAttributes = Omit<
 export interface ColorPickerBaseProps<T extends AnyColor> extends ColorPickerHTMLAttributes {
   color: T;
   onChange: (newColor: T) => void;
+
+  hasHexInput?: boolean;
+  hasRgbInput?: boolean;
 }
 
 type ColorInputHTMLAttributes = Omit<
