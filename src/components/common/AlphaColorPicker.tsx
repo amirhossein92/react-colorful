@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 
 import { Hue } from "./Hue";
 import { Saturation } from "./Saturation";
 import { Alpha } from "./Alpha";
 
-import { ColorModel, ColorPickerBaseProps, AnyColor } from "../../types";
+import { ColorModel, ColorPickerBaseProps, AnyColor, HsvaColor } from "../../types";
 import { useColorManipulation } from "../../hooks/useColorManipulation";
 import { useStyleSheet } from "../../hooks/useStyleSheet";
 import { formatClassName } from "../../utils/format";
@@ -14,6 +14,10 @@ import { RgbaColorInput } from "../RgbaColorInput";
 
 interface Props<T extends AnyColor> extends Partial<ColorPickerBaseProps<T>> {
   colorModel: ColorModel<T>;
+  inputRender?: (data: {
+    value: Partial<HsvaColor>;
+    onChange: (color: Partial<HsvaColor>) => void;
+  }) => ReactNode;
 }
 
 export const AlphaColorPicker = <T extends AnyColor>({
@@ -23,6 +27,7 @@ export const AlphaColorPicker = <T extends AnyColor>({
   hasHexInput,
   hasRgbInput,
   onChange,
+  inputRender,
   ...rest
 }: Props<T>): JSX.Element => {
   const nodeRef = useRef<HTMLDivElement>(null);
@@ -38,6 +43,7 @@ export const AlphaColorPicker = <T extends AnyColor>({
       <Hue hue={hsva.h} onChange={updateHsva} />
       <Alpha hsva={hsva} onChange={updateHsva} className="react-colorful__last-control" />
 
+      {inputRender && inputRender({ value: hsva, onChange: updateHsva })}
       {(hasRgbInput || hasHexInput) && (
         <div className="react-colorful__inputs">
           {hasRgbInput && (

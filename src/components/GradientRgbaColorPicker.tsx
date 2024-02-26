@@ -1,11 +1,15 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import { GradientAlphaColorPicker } from "./common/GradientAlphaColorPicker";
-import { ColorPickerBaseProps, GradientColorModel, GradientHsvaColor } from "../types";
+import { ColorPickerBaseProps, GradientColorModel, GradientHsvaColor, HsvaColor } from "../types";
 
 export interface GradientRgbaColorPickerProps {
   hasHexInput?: boolean;
   hasRgbInput?: boolean;
+  inputRender?: (data: {
+    value: Partial<HsvaColor>;
+    onChange: (color: Partial<HsvaColor>) => void;
+  }) => ReactNode;
 }
 
 const colorModel: GradientColorModel<GradientHsvaColor> = {
