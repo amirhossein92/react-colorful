@@ -31,4 +31,10 @@ export {
 
 // Tooling
 export { setNonce } from "./utils/nonce";
-export { hsvaGradientToString as gradientToString, hsvaToHex, hexToHsva } from "./utils/convert";
+export {
+  hsvaGradientToString as gradientToString,
+  hsvaToHex,
+  hexToHsva,
+  hsvaToRgba,
+  rgbaToHsva,
+} from "./utils/convert";
