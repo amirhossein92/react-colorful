@@ -70,7 +70,30 @@ const Demo = () => {
 
       <Header style={{ color: textColor }}>
         <HeaderDemo>
-          <HeaderDemoPicker color={color} onChange={handleChange} hasHexInput hasRgbInput />
+          <HeaderDemoPicker
+            color={color}
+            onChange={handleChange}
+            inputRender={({ value, onChange }) => (
+              <div>
+                <input
+                  value={value.h}
+                  onChange={(e) => onChange({ ...value, h: parseInt(e.target.value) })}
+                />
+                <input
+                  value={value.s}
+                  onChange={(e) => onChange({ ...value, s: parseInt(e.target.value) })}
+                />
+                <input
+                  value={value.v}
+                  onChange={(e) => onChange({ ...value, v: parseInt(e.target.value) })}
+                />
+                <input
+                  value={value.a}
+                  onChange={(e) => onChange({ ...value, a: parseInt(e.target.value) })}
+                />
+              </div>
+            )}
+          />
         </HeaderDemo>
         <HeaderContent>
           <HeaderTitle>React Colorful 🎨</HeaderTitle>
