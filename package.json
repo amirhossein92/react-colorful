@@ -1,6 +1,6 @@
 {
-  "name": "react-colorful-gradient",
-  "version": "5.6.1",
+  "name": "@amirhossein92/react-colorful",
+  "version": "1.2.0",
   "description": "added gradient component into the react-colorful",
   "source": "src/index.ts",
   "main": "dist/index.js",
